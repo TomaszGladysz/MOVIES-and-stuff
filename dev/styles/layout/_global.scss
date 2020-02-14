@@ -1,0 +1,116 @@
+html{
+    scroll-behavior: smooth;
+}
+
+#titre{
+    width: 100vw !important;
+    text-align: center;
+    font-size: 45px !important;
+}
+
+.wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperMovie{
+    margin: 50px;
+    width: 500px;
+
+}
+
+.wrapperImage{
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    &:before{
+        content: "";
+        background: rgb(218,165,32);
+        background: linear-gradient(41deg, rgba(218,165,32,0.8) 0%, rgba(0,0,0,0.7035189075630253) 100%);
+        width: 100%;
+        height: 100%;       
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: 0.5s all ease-in-out;
+    }
+    &:hover:before{
+        opacity: 1;
+    }
+    &:hover p{
+        display: block;
+        opacity: 1;
+
+    }
+    &:hover h2{
+        right: 0;
+    }
+}
+
+img{
+    height: 750px;
+}
+
+h1{
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: center;
+
+}
+
+h2{
+    background: #daa520;
+    height: 50px;
+    display:flex;
+    align-items: center;
+    color: white;
+    font-family: "Calibri";
+    font-weight: 400;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    right: -150px;
+    transition: .3s ease-in-out;
+    span{
+        padding-right: 5px;
+    }
+}
+
+p{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    color: white;
+    padding: 25px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+    font-family: 'Nunito', sans-serif;
+    font-weight: lighter;
+    text-align: justify;
+    line-height: 22px;
+}
+
+.wrapperPop{
+    position: fixed;
+    width: 75vw;
+    height: 75vh;
+    background: rgba(0, 0, 0, 0.95);
+    top: -500%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+}
+
+.reveal{
+    top: 50% !important;
+}

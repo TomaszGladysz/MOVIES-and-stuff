@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Nunito:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <title>Document</title>
+
+
+</head>
+<body>
+
+    <h1 id="titre">MOVIES and stuff</h1>
+    <div class="wrapperPop">
+
+    </div>
+
+    <div class="wrapper">
+        
+    </div>
+
+    <script>
+        for (var i = 1 ; i<10 ; i++ ){
+
+        
+        let targetURL = "https://api.themoviedb.org/3/trending/all/week?api_key=6631e5f1dc96088e0d26b86da29b5b6a&language=fr-BE&page=" + i; 
+        let xhr = new XMLHttpRequest();
+
+        xhr.addEventListener('readystatechange', function (event){
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let json =JSON.parse(xhr.responseText);
+                // console.log(json.results[0].poster_path);
+
+
+                for(let i=0; i<json.results.length; i++){
+                    let wrapper = document.querySelector('.wrapper');
+                    let title = document.createElement('h1');
+                    let rating = document.createElement('h2');
+                    let poster = document.createElement('img');
+                    let imageWrap =document.createElement('div');
+                    let description = document.createElement('p');
+                    let filmWrap = document.createElement('div');
+
+                    filmWrap.className= 'wrapperMovie';
+                    imageWrap.className= 'wrapperImage';
+
+                    poster.setAttribute('src', "https://image.tmdb.org/t/p/w500/" + json.results[i].poster_path);
+
+                    // title.textContent = json.results[i].title;
+                        // console.log(json.results[18].title);
+                        if(json.results[i].title == undefined){
+                            title.textContent = json.results[i].original_name;
+                        } else {
+                            title.textContent = json.results[i].title;
+                        };
+
+                        if(json.results[i].vote_average >=8){
+                            rating.innerHTML = "<span>😍</span>"+json.results[i].vote_average+"/10";
+                        } else if (json.results[i].vote_average >=7){ 
+                            rating.innerHTML = "<span>🥰</span>"+json.results[i].vote_average+"/10";
+                        } else if (json.results[i].vote_average >=6){ 
+                            rating.innerHTML = "<span>😊</span>"+json.results[i].vote_average+"/10";
+                        } else if (json.results[i].vote_average >=5){ 
+                            rating.innerHTML = "<span>😒</span>"+json.results[i].vote_average+"/10";
+                        } else if (json.results[i].vote_average >=4){ 
+                            rating.innerHTML = "<span>🤢</span>"+json.results[i].vote_average+"/10";
+                        } else{
+                            rating.innerHTML = "<span>💩</span>"+json.results[i].vote_average+"/10";
+                        };
+
+                    // rating.innerHTML = "<span>🍿</span>"+json.results[i].vote_average+"/10";
+                    description.textContent = json.results[i].overview;
+                    
+                    wrapper.appendChild(filmWrap);
+                    filmWrap.appendChild(title);
+                    filmWrap.appendChild(imageWrap);
+                    imageWrap.appendChild(poster);
+                    imageWrap.appendChild(rating);
+                    imageWrap.appendChild(description);
+                    
+                }
+
+                 
+
+            }
+        })
+            xhr.open('GET', targetURL, true);
+            xhr.send();
+    }
+          
+    var clickReveal = document.querySelector('.wrapperPop');
+    var imageWrap = document.querySelectorAll('.wrapperImage');
+    console.log(imageWrap);
+    imageWrap.addEventListener('click', function(){
+        clickReveal.classList.toggle('reveal');
+        console.log("hello");
+    });
+    
+
+    </script>
+</body>
+<script src="js/main.min.js">
+</script>
+</html>
