@@ -14,7 +14,7 @@
 
     <h1 id="titre">MOVIES and stuff</h1>
     <div class="wrapperPop">
-
+        <div class="close">❌</div>
     </div>
 
     <div class="wrapper">
@@ -80,8 +80,21 @@
                     imageWrap.appendChild(rating);
                     imageWrap.appendChild(description);
                     
-                }
 
+                    var clickReveal = document.querySelector('.wrapperPop');
+                    var clickClose = document.querySelector('.close');
+                    imageWrap.addEventListener('click', function(){
+                        clickReveal.classList.toggle('reveal');
+                        console.log(json.results[i].title)
+                    });
+
+                    clickClose.addEventListener('click', function(){
+                        clickReveal.classList.remove('reveal');
+
+                    });
+
+
+                }
                  
 
             }
@@ -90,13 +103,7 @@
             xhr.send();
     }
           
-    var clickReveal = document.querySelector('.wrapperPop');
-    var imageWrap = document.querySelectorAll('.wrapperImage');
-    console.log(imageWrap);
-    imageWrap.addEventListener('click', function(){
-        clickReveal.classList.toggle('reveal');
-        console.log("hello");
-    });
+
     
 
     </script>

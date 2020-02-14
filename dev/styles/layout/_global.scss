@@ -111,6 +111,13 @@ p{
     z-index: 10000;
 }
 
+.close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
 .reveal{
     top: 50% !important;
 }
