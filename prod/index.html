@@ -82,10 +82,16 @@
                     
 
                     var clickReveal = document.querySelector('.wrapperPop');
+                    let closeButton = document.createElement('div');
+                    closeButton.className = 'close';
                     var clickClose = document.querySelector('.close');
+                    
+           
                     imageWrap.addEventListener('click', function(){
                         clickReveal.classList.toggle('reveal');
                         console.log(json.results[i].title)
+                        clickReveal.innerHTML = "<h1>" + json.results[i].title + "</h1>" ;
+                        clickReveal.appendChild(closeButton);
                     });
 
                     clickClose.addEventListener('click', function(){
