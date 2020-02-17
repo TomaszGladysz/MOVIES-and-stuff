@@ -90,8 +90,9 @@
                     imageWrap.addEventListener('click', function(){
                         clickReveal.classList.toggle('reveal');
                         console.log(json.results[i].title)
-                        clickReveal.innerHTML = "<h1>" + json.results[i].title + "</h1>" ;
-                        
+
+                        clickReveal.innerHTML = "<h1>" + json.results[i].title + "</h1>" + "<h3>" + json.results[i].release_date + "</h3>" ;
+
                         clickReveal.appendChild(closeButton);
                         closeButton.innerHTML = "❌" ;
                     });
